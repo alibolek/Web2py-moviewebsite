@@ -15,5 +15,5 @@ Thats all!
 
 ## Contributors
 
-[Muhammed Ali Bolek](https://github.com/alibolek)
-[Ersel Er](https://github.com/erseler)
+* [Muhammed Ali Bolek](https://github.com/alibolek)
+* [Ersel Er](https://github.com/erseler)
