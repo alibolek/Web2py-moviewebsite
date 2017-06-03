@@ -3,11 +3,11 @@
 This is example website that shows movie informations.
 Deployed to pythonanywhere : [Movies] (https://aeliblack.pythonanywhere.com/movies/default/)
 
-##Usage
+## Usage
 To use this application just install web2py framework and python.Copy movies file into your web2py/applications/ directory.
 Thats all!
 
-##Tools
+## Tools
 
 * Web2py
 * Python
