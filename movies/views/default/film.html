@@ -1,0 +1,91 @@
+{{extend 'template.html'}}
+{{block content}}
+<div class="ui two column grid">
+  <div class="row">
+    <div class="four wide column">
+      <img src="/movies/static/film_images/film_{{=film.id}}.jpg" float=left>
+    </div>
+    <div class="twelve wide column">
+      <table class="ui table" style="border:none;">
+        <tr>
+          <th width="100px">Story:</th>
+          <td>{{=film.storyline}}</td>
+        </tr>
+        <tr>
+          <th width="100px" >Imdb Rating:</th>
+          <td>{{=film.imdb_rate}}</td>
+        </tr>
+        <tr>
+          <th width="100px">Duration:</th>
+          <td>{{=film.duration}} min.</td>
+        </tr>
+        <tr>
+          <th width="100px">Release Date:</th>
+          <td>{{=film.release_date}}</td>
+        </tr>
+        <tr>
+          <th width="100px">Director:</th>
+          <td><a href="/movies/default/director/{{=director.id}}">{{=director.name}}</a></td>
+        </tr>
+        <tr>
+          <th width="100px">Genres:</th>
+          <td>{{=film.genre_names}}</td>
+        </tr>
+        <tr>
+          <th width="100px">Rating:</th>
+          <td><div class="ui rating" data-rating="3" data-max-rating="5"></div></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<br><br><br>
+<div class="ui one column grid">
+  <div class="row">
+    <div class="eight wide column">
+      <div class="ui comments">
+      <h3 class="ui dividing header">Comments</h3>
+
+      {{if(datas):}}
+        {{for d in datas:}}
+          <div class="comment">
+            <a class="avatar">
+              <img src="{{=URL('static','images/avatar.jpg')}}">
+            </a>
+            <div class="content">
+            {{if(auth.user):}}
+              {{if(auth.user.id==d['user_id']):}}
+              <a href="/movies/default/edit_comment/{{=d['id']}}" class="author">{{=d['user_id']['first_name']}} {{=d['user_id']['last_name']}}</a>
+              {{else:}}
+              <span class="author">{{=d['user_id']['first_name']}} {{=d['user_id']['last_name']}}</span>
+              {{pass}}
+            {{else:}}
+              <span class="author">{{=d['user_id']['first_name']}} {{=d['user_id']['last_name']}}</span>
+              {{pass}}
+              <div class="metadata">
+                <span class="date">{{=d['time'].strftime('%d %B at %H:%M, %Y')}}</span>
+              </div>
+
+              <div class="text">
+                <h5 class="h4">{{=d['title']}}</h5>
+                {{=d['content']}}
+              </div>
+            </div>
+          </div>
+          <div class="ui divider"></div>
+
+        {{pass}}
+      {{else:}}
+        No comments yet.
+      {{pass}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="eight wide column">
+    <h3 class="ui dividing header">Leave a comment</h3>
+      {{=form}}
+    </div>
+  </div>
+</div>
+{{end}}

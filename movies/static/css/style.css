@@ -1,0 +1,14 @@
+
+#content{
+	min-height: 80%;
+	padding-top: 90px;
+}
+.myfooter{
+	width: 100%;
+	padding-top: 50px!important;
+	padding-bottom: 50px!important;
+	margin-bottom: 0!important;
+	margin-top: 50px!important;
+	position: absolute;
+	bottom: 0;
+}

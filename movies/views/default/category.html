@@ -1,0 +1,32 @@
+{{extend 'template.html'}}
+
+{{block content}}
+<table class="ui fixed table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Name</th>
+            <th>Director</th>
+            <th>IMDB</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+            {{for f in film_data:}}
+            <tr>
+            <td><a href="/movies/default/film/{{=f.id}}"><img height="150px" width="auto" src="/movies/static/film_images/film_{{=f.id}}.jpg"></a></td>
+              <td><a href="/movies/default/film/{{=f.id}}">{{=f.title}}</a></td>
+              {{for d in directors:}}
+                {{if f.director_id==d.id:}}
+                <td><a href="/movies/default/director/{{=d.id}}">{{=d.name}}</a></td>
+              {{pass}} 
+              {{pass}}
+              <td>{{=f.imdb_rate}}</td>
+              <td><a href="/movies/default/add_watch_list/{{=f.id}}">
+                  <i class="plus icon add-watchlist-button" data-content="Add this to your watchlist."></i>
+              </a></td>
+            </tr>
+             {{pass}}
+          </tbody>
+  </table>
+{{end content}}

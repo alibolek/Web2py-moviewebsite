@@ -1,0 +1,118 @@
+{{extend "template.html"}}
+
+{{block content}}
+<table class="ui very basic collapsing celled table">
+  <thead>
+    <tr>
+    	<th>Group Member</th>
+    	<th>Student ID</th>
+  	</tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>
+        <h4 class="ui image header">
+          <div class="content">
+            <div class="sub header">Muhammed Ali Bölek
+          </div>
+        </div>
+      </h4></td>
+      <td>
+        120709020
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <h4 class="ui image header">
+          <div class="content">
+            <div class="sub header">Müslüm Ersel Er
+          </div>
+        </div>
+      </h4></td>
+      <td>
+        1107090003
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<h2 class="ui header">Report</h2>
+<div class="ui divider"></div>
+<div class="ui list">
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Template</div>
+      <div class="description">Instead of using a template, we used <a href="http://semantic-ui.com">semantic-ui</a>  which is a css framework. The fremework allowed us to build <b>well-designed</b> and simple interface.
+      </div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Models</div>
+      <div class="description">We used sqllite and web2py DAL(database abstraction layer) to define our tables.</div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Dynamic Content</div>
+      <div class="description">We tried to make the pages dynamic as much as possible. The only static pages are <a href="/movies/default/index">Homepage</a>
+        and <a href="/movies/default/about">About</a> page.
+        <p>In our site, <b>films</b> and <b>directors</b> are the main items that have dynamic structure. <b>Comments </b>and <b>genres </b> are the other items that have also dynamic structure.</p>
+      </div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">User Management</div>
+      <div class="description">We basically created a user login, logout and register system by using web2py's own user tables that allowed more advanced usage. For example; by using the decorator <span class="ui label">@auth.requires_login()</span> we restricted access to the functions to only logged in users. 
+      </div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Tables</div>
+      <div class="description">We used <b>semantic-ui tables</b> to get <b>well-formed</b> views in the dynamic contents such as <b>films</b>. 
+      </div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Forms</div>
+      <div class="description">In our site, we used forms to create an object or edit an existing object. Actually, we did all the <b>CRUD</b>(create, read, update and delete) operations somewhere in the project.
+      </div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Additional Data</div>
+      <div class="description">In the project, we have <b>films</b> and <b>directors</b> as main items. Additionally, we have <b>genres, comments</b> and <b>watchlist</b> that
+      have relations to the main items.
+      </div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Data Insertion</div>
+      <div class="description">First, we populated the data by hand in the lists(in <b>default.py</b> file) then we inserted all the data programatically using the lists. In 
+      this way, we avoided the data loss. 
+      </div>
+    </div>
+  </div><br>
+  <div class="item">
+    <i class="right triangle icon"></i>
+    <div class="content">
+      <div class="header">Additional Functionality</div>
+      <div class="description">In the project, we used <a href="https://jquery.com">jquery</a>  and javascript to get more functionality such as search. 
+      </div>
+    </div>
+  </div><br>
+</div>
+{{end}}

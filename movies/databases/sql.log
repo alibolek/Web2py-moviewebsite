@@ -1,0 +1,124 @@
+timestamp: 2015-12-30T02:44:53.861000
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    first_name CHAR(128),
+    last_name CHAR(128),
+    email CHAR(512),
+    username CHAR(128),
+    password CHAR(512),
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2015-12-30T02:44:53.872000
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-12-30T02:44:53.882000
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  
+);
+success!
+timestamp: 2015-12-30T02:44:53.889000
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE  ,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2015-12-30T02:44:53.895000
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2015-12-30T02:44:53.899000
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2015-12-30T02:44:53.902000
+CREATE TABLE directors(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512),
+    bio TEXT
+);
+success!
+timestamp: 2015-12-30T02:44:53.905000
+CREATE TABLE genres(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name CHAR(512)
+);
+success!
+timestamp: 2015-12-30T02:44:53.908000
+CREATE TABLE films(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    title CHAR(512),
+    imdb_rate DOUBLE,
+    duration INTEGER,
+    release_date INTEGER,
+    storyline TEXT,
+    director_id INTEGER REFERENCES directors (id) ON DELETE CASCADE  ,
+    genre TEXT
+);
+success!
+timestamp: 2015-12-30T02:44:53.912000
+CREATE TABLE comment(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    title CHAR(512),
+    content TEXT,
+    film_id INTEGER REFERENCES films (id) ON DELETE CASCADE  ,
+    time TIMESTAMP
+);
+success!
+timestamp: 2015-12-30T02:44:53.915000
+CREATE TABLE watch_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    owner INTEGER REFERENCES auth_user (id) ON DELETE CASCADE   UNIQUE,
+    film_list TEXT
+);
+success!
+timestamp: 2015-12-30T02:44:53.918000
+CREATE TABLE ratings(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    owner INTEGER REFERENCES auth_user (id) ON DELETE CASCADE  ,
+    film INTEGER REFERENCES films (id) ON DELETE CASCADE  ,
+    rate INTEGER
+);
+success!
+DELETE FROM directors;
+DELETE FROM sqlite_sequence WHERE name='directors';
+success!
+DELETE FROM genres;
+DELETE FROM sqlite_sequence WHERE name='genres';
+success!
+DELETE FROM films;
+DELETE FROM sqlite_sequence WHERE name='films';
+success!
+DELETE FROM directors;
+DELETE FROM sqlite_sequence WHERE name='directors';
+success!
+DELETE FROM genres;
+DELETE FROM sqlite_sequence WHERE name='genres';
+success!
+DELETE FROM films;
+DELETE FROM sqlite_sequence WHERE name='films';
+success!

@@ -1,0 +1,30 @@
+{{extend 'template.html'}}
+
+{{block content}}
+{{if(films):}}
+<table class="ui fixed table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>IMDB</th>
+            <th></th>
+
+          </tr>
+        </thead>
+        <tbody>
+            {{for f in films:}}
+            <tr>
+              <td><a href="/movies/default/film/{{=f.id}}">{{=f.title}}</a></td>
+              <td>{{=f.imdb_rate}}</td>
+              <td><a href="/movies/default/remove_watch_list/{{=f.id}}">
+                  <i class="trash red icon add-watchlist-button" data-content="Remove this from your watchlist."></i>
+              </a></td>
+
+            </tr>
+             {{pass}}
+          </tbody>
+  </table>
+  {{else:}}
+  You have no movie in your watchlist.
+  {{pass}}
+{{end content}}

@@ -1,0 +1,82 @@
+{{extend 'template.html'}}
+
+{{block content}}
+<div class="ui one column grid ">
+  <div class="row">
+    <div class="eight wide column">
+			{{=form}}
+      
+		</div>
+	</div>
+</div>
+<br>
+<br>
+<br>
+<div class="ui one column grid ">
+  <div class="row">
+    <div class="sixteen wide column">
+    <h2 class="ui header">Your Comments</h2>
+    <div class="ui divider"></div>
+      <div class="ui comments">
+      {{if(comments):}}
+        {{for c in comments:}}
+          <div class="comment">
+            <a class="avatar">
+              <img src="{{=URL('static','images/avatar.jpg')}}">
+            </a>
+            <div class="content">
+            {{if(auth.user):}}
+              {{if(auth.user.id==c['user_id']):}}
+              <a href="/movies/default/edit_comment/{{=c['id']}}" class="author">{{=c['user_id']['first_name']}} {{=c['user_id']['last_name']}}</a>
+              {{else:}}
+              <span class="author">{{=c['user_id']['first_name']}} {{=c['user_id']['last_name']}}</span>
+              {{pass}}
+            {{else:}}
+              <span class="author">{{=c['user_id']['first_name']}} {{=c['user_id']['last_name']}}</span>
+              {{pass}}
+              <div class="metadata">
+                <span class="date"><b>{{=c['time'].strftime('%d %B at %H:%M, %Y')}} to </b> <a href="/movies/default/film/{{=c['film_id']}}">{{=c['film_id']['title']}}</a></span>
+              </div>
+
+              <div class="text">
+                <h5 class="h4">{{=c['title']}}</h5>
+                {{=c['content']}}
+              </div>
+            </div>
+          </div>
+          <div class="ui divider"></div>
+
+        {{pass}}
+      {{else:}}
+        No comments yet.
+      {{pass}}
+      </div>
+    </div>
+  </div>
+</div>
+
+      
+<div class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    Password Required
+  </div>
+  <form action="#" method="post" class="ui form" id="form2">
+  	<div width="100px" style="margin:0;" class="field">
+      <input type="password" name="password" placeholder="password">
+      <input type="hidden" name="first_name" >
+      <input type="hidden" name="last_name" >
+  		<input type="hidden" name="email" >
+  	</div>
+  	<div class="actions">
+  		
+	  <div class="ui positive right labeled icon button" id="multi-submit-button">
+      Confirm
+      <i class="checkmark icon"></i>
+    </div>
+
+  	</div>
+  </form>
+
+</div>
+{{end content}}

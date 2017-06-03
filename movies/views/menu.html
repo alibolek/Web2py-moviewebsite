@@ -1,0 +1,45 @@
+<div class="ui teal fixed menu">  
+  <div class="ui container">
+    <a href="/movies/default/index" class="header item">
+      <img class="logo" src="{{=URL('static','images/favicon.png')}}" height="32px" width="32px" style="margin-right: 1.5em;">
+      Home
+    </a>
+    <a href="/movies/default/films" class="item"><i class="film icon"></i>Films</a>
+    <a href="/movies/default/directors" class="item"><i class="users icon"></i>Directors</a>
+    <div class="ui simple dropdown item"><i class="list icon"></i>
+      Categories <i class="dropdown icon"></i>
+      <div class="menu">
+      
+      {{for g in range(db(db.genres).count()):}}
+      {{rows=db(db.genres.id==g+1).select().first()}}
+
+        <a class="item" href="/movies/default/category/{{=rows.name.lower()}}/{{=rows.id}}">{{=rows.name}}</a>
+     {{pass}}
+      </div>
+    </div>
+    <a href="/movies/default/about" class="item">About</a>
+	  <div class="right menu">
+	    <div class="item">
+        <div class="ui right icon input">
+          <input class="prompt" type="text" placeholder="Search a film" id='search-area'>
+          <i class="search icon"></i>
+        </div>
+      </div>
+      {{if auth.user:}}
+        <div class="ui simple dropdown item">
+      <i class="user icon"></i> {{=auth.user.first_name}} <i class="dropdown icon"></i>
+      <div class="menu">
+        <a class="item" href="/movies/default/profile"><i class="setting icon"></i>Profile</a>
+        <a class="item" href="/movies/default/watchlist"><i class="star icon"></i>Watchlist</a>
+        <a class="item" href="/movies/default/logout"><i class="power icon"></i>Logout</a>
+      </div>
+    </div>
+      {{else:}}
+        <a href="/movies/default/login" class="item">Login</a>
+        <a href="/movies/default/register" class="item">Register</a>
+      {{pass}}
+      {{pass}}
+      
+	  </div>
+  </div>
+</div>

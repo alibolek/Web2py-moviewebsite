@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {{if(title):}}
+  <title>Movies | {{=title}}</title>
+  {{else:}}
+  <title>Welcome to Movies</title>
+  {{pass}}
+  {{pass}}
+  <script type="text/javascript" src="{{=URL('static','js/jquery-1.11.3.min.js')}}"></script>
+  <script src="{{=URL('static','semantic_ui/semantic.min.js')}}"></script>
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','semantic_ui/semantic.min.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{=URL('static','css/style.css')}}">
+  <link rel="icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon"/>
+</head>
+<body>
+  {{include "menu.html"}}
+
+  <div class="ui main container " id="content">
+    {{if(title):}}
+  	<h2 class="ui header">{{=title}}</h2>
+    <div class="ui divider"></div>
+    {{pass}}
+    
+    {{block content}}
+    {{end}}
+  </div>
+  {{include 'footer.html'}}
+  <script type="text/javascript" src="{{=URL('static','js/app.js')}}"></script>
+</body>
+</html>

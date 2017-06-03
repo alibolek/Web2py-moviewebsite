@@ -1,0 +1,21 @@
+{{extend 'template.html'}}
+{{block content}}
+ <table class="ui fixed table">
+        <thead>
+          <tr>
+            <th>Name</th>
+          </tr>
+        </thead>
+        <tbody>
+            {{for d in directors:}}
+            <tr>
+              <td><a href="/movies/default/director/{{=d.id}}">{{=d.name}}</a></td>
+            
+              {{pass}}
+              </td>
+            </tr>
+             
+          </tbody>
+  </table>
+
+{{end}}

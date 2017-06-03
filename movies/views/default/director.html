@@ -1,0 +1,13 @@
+{{extend 'template.html'}}
+
+{{block content}}
+	<h3>Bio:</h3>
+	<p>{{=director.bio}}</p>
+	<h3>Movies:</h3>
+	<ul>
+		{{for f in film:}}
+		<li class="ui list"><i class="film icon"></i><a href="/movies/default/film/{{=f.id}}">{{=f.title}}({{=f.release_date}})</a></li>
+		{{pass}}
+	</ul>
+   
+{{end}}
